@@ -1,0 +1,22 @@
+name: Manual Rust Check
+
+on:
+  workflow_dispatch:        # запуск вручную из вкладки Actions
+  push:
+    branches:
+      - master              # или main, если ветка так называется
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show Rust and repo info
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Print files
+        run: |
+          echo "Listing project files:"
+          ls -R
